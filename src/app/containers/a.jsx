@@ -1,15 +1,17 @@
 import React from 'react';
 
-import { observer } from 'mobx-react';
-import CounterA from '../../components/counter-a';
-import Counter from '../../domains/vo/counter';
+import { observer, inject } from 'mobx-react';
+import PersonComponent from '../../components/person';
+import Person from '../../domains/vo/person';
 
-export default observer(({ store }) => {
+export default inject('stores')(observer(({ stores }) => {
+  const { person } = stores;
+  const { update, incrementAge } = person;
+
   const props = {
-    counter: new Counter(store.count),
-    increment: store.increment,
-    decrement: store.decrement,
-    incrementAsync: store.incrementAsync
+    person: new Person(person.toJS()),
+    updateField: update,
+    incrementAge
   };
-  return <CounterA {...props} />;
-});
+  return <PersonComponent {...props} />;
+}));

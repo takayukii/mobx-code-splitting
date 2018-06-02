@@ -1,8 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 import Loadable from 'react-loadable';
-import state from './app/store/app-state';
+import remotedev from 'mobx-remotedev';
+
+import countStore from './app/stores/count-store';
+import personStore from './app/stores/person-store';
+
+const allStores = {
+  count: remotedev(countStore),
+  person: remotedev(personStore)
+};
 
 const Loading = () => <div>Loading...</div>;
 
@@ -17,11 +26,14 @@ const B = Loadable({
 });
 
 render(
-  <Router>
-    <Switch>
-      <Route exact path="/" render={() => <A store={state} />} />
-      <Route path="/b" render={() => <B store={state} />} />
-    </Switch>
-  </Router>,
+  <Provider stores={allStores}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={A} />
+        <Route path="/b" component={B} />
+      </Switch>
+    </Router>
+  </Provider>
+  ,
   document.getElementById('root')
 );

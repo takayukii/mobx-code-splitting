@@ -1,15 +1,19 @@
 import React from 'react';
 
-import { observer } from 'mobx-react';
-import CounterB from '../../components/counter-b';
+import { observer, inject } from 'mobx-react';
+import CounterComponent from '../../components/counter';
 import Counter from '../../domains/vo/counter';
 
-export default observer(({ store }) => {
+export default inject('stores')(observer(({ stores }) => {
+  const { count: countStore } = stores;
+  const {
+    count, increment, decrement, incrementAsync
+  } = countStore;
   const props = {
-    counter: new Counter(store.count),
-    increment: store.increment,
-    decrement: store.decrement,
-    incrementAsync: store.incrementAsync
+    counter: new Counter(count),
+    increment,
+    decrement,
+    incrementAsync
   };
-  return <CounterB {...props} />;
-});
+  return <CounterComponent {...props} />;
+}));

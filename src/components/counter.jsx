@@ -15,9 +15,10 @@ export default class Counter extends Component {
   };
 
   render() {
+    const { counter } = this.props;
+    console.log('Counter render', counter);
     return (
       <div>
-        <h1>Counter B</h1>
         Doubled: {this.props.counter.doubled} {'  '}
         <button onClick={this.handleInc}> + </button>
         <button onClick={this.handleDec}> - </button>
