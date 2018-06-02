@@ -33,7 +33,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // new HTMLWebpackPlugin({ title: 'MobX Code Splitting Counter' })
   ],
   devServer: {
     contentBase: './dist',
