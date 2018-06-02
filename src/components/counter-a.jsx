@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
-class CounterA extends Component {
+export default class Counter extends Component {
   handleInc = () => {
-    this.props.store.increment();
+    this.props.increment();
   };
 
   handleDec = () => {
-    this.props.store.decrement();
+    this.props.decrement();
   };
 
   handleIncAsync = () => {
-    this.props.store.incrementAsync();
+    this.props.incrementAsync();
   };
 
   render() {
     return (
       <div>
         <h1>Counter A</h1>
-        Counter: {this.props.store.count} {'  '}
+        Counter: {this.props.count} {'  '}
         <button onClick={this.handleInc}> + </button>
         <button onClick={this.handleDec}> - </button>
         <button onClick={this.handleIncAsync}> Increment async </button>
@@ -31,4 +30,3 @@ class CounterA extends Component {
   }
 }
 
-export default observer(CounterA);
