@@ -18,7 +18,7 @@ export default class Counter extends Component {
     return (
       <div>
         <h1>Counter B</h1>
-        Counter: {this.props.count} {'  '}
+        Doubled: {this.props.counter.doubled} {'  '}
         <button onClick={this.handleInc}> + </button>
         <button onClick={this.handleDec}> - </button>
         <button onClick={this.handleIncAsync}> Increment async </button>
