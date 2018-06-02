@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "NODE_ENV=production webpack --config ./webpack.config.js --mode production",
     "lint": "eslint --fix --ext .jsx,.js src/",
     "lint:fix": "eslint --fix --ext .jsx,.js src/"
   },
