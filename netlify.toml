@@ -1,0 +1,10 @@
+[Settings]
+ID = "511051ad-3e34-4cd0-a705-7a78120279c0"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Content-Type-Options = "nosniff"
+	Strict-Transport-Security = "max-age=31536000; includeSubDomains"
