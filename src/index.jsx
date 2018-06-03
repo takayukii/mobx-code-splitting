@@ -8,6 +8,16 @@ import remotedev from 'mobx-remotedev';
 import countStore from './app/stores/count-store';
 import personStore from './app/stores/person-store';
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
+}
+
 const allStores = {
   count: remotedev(countStore),
   person: remotedev(personStore)

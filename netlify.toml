@@ -1,6 +1,12 @@
 [Settings]
 ID = "511051ad-3e34-4cd0-a705-7a78120279c0"
 
+[[redirects]]
+  from = "http://pwa-mobx-test.netlify.com/*"
+  to = "https://pwa-mobx-test.netlify.com/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
